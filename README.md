@@ -45,6 +45,9 @@ To calculate basic structural properties (tilt angle, repeat distance, nematic o
 
 `--max` maximum z position of lipid headgroups to include in analysis. Use `--min` and `--max` to specify one or more layers in a multilayer system
 
+`--center` use this flag to center the bilayer at the origin
+
+
 ### Loading in results
 `analysis` will output a `pickle`d dictionary file containing structural properties calculated for each frame of the trajectory (default: `outputDirectory/results.p`. This output file can be loaded and analyzed using functions in the `analysis.data` module.
 

@@ -67,6 +67,7 @@ def main():
                         default=None)
     parser.add_argument("--max", action="store", type=float,
                         default=None)
+    parser.add_argument("--center", action="store_true", default=False)
     options = parser.parse_args()
 
     trajfile = options.file
@@ -77,6 +78,7 @@ def main():
     reload_traj = options.reload
     z_min = options.min
     z_max = options.max
+    center = options.center
 
     ## LOADING TRAJECTORIES
     # If cached traj exists:
@@ -105,6 +107,10 @@ def main():
                                         "HOH SOL)")
         traj.atom_slice(sel_atoms, inplace=True)
         masses = masses.take(sel_atoms)
+
+        # Center the trajectory at the origin
+        if center:
+            traj.xyz = traj.xyz - np.mean(traj.xyz, axis=1)[:,None,:]
 
         # Load system information
         traj = analysis.load.get_standard_topology(traj, cg)
