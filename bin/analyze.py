@@ -35,7 +35,7 @@ def analyze_all(frame):
                 z, [np.min(z), np.max(z)],
                 n_layers=frame.n_leaflets,
                 prominence=0,
-                distance=50
+                distance=110
                 )
 
     # Get z-ranges encompassing each leaflet
